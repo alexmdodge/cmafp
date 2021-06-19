@@ -13,7 +13,7 @@
     }
   },
   "scripts": {
-    "build": "./scripts/build.sh",
+    "build": "(cd ./scripts && ./build.sh)",
     "test": "node ./test/index.js"
   },
   "dependencies": {
