@@ -3,9 +3,17 @@
   "version": "0.1.0",
   "description": "Portable CMAF WASM parser",
   "main": "cmafp.js",
-  "private": true,
+  "license": "MIT",
+  "config": {
+    "cmafp": {
+      "libDir": "lib/cmafp",
+      "lib": "libcmafp.a",
+      "input": "cmafp.cpp",
+      "output": "cmafp.js"
+    }
+  },
   "scripts": {
-    "build": "./build.sh",
+    "build": "./scripts/build.sh",
     "test": "node ./test/index.js"
   },
   "dependencies": {
