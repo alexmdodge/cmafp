@@ -1,0 +1,14 @@
+{
+  "name": "cmafp",
+  "version": "0.1.0",
+  "description": "Portable CMAF WASM parser",
+  "main": "cmafp.js",
+  "private": true,
+  "scripts": {
+    "build": "./build.sh",
+    "test": "node ./test/index.js"
+  },
+  "dependencies": {
+    "chalk": "^4.1.1"
+  }
+}

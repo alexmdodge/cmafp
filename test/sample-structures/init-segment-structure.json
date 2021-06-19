@@ -1,0 +1,197 @@
+[
+  {
+    "name": "ftyp",
+    "header_size": 8,
+    "size": 36,
+    "major_brand": "isom",
+    "minor_version": 512,
+    "compatible_brand": "isom",
+    "compatible_brand": "iso2",
+    "compatible_brand": "avc1",
+    "compatible_brand": "mp41",
+    "compatible_brand": "iso5"
+  },
+  {
+    "name": "moov",
+    "header_size": 8,
+    "size": 673,
+    "children": [
+      {
+        "name": "mvhd",
+        "header_size": 12,
+        "size": 108,
+        "timescale": 1000,
+        "duration": 758758,
+        "duration(ms)": 758758
+      },
+      {
+        "name": "trak",
+        "header_size": 8,
+        "size": 501,
+        "children": [
+          {
+            "name": "tkhd",
+            "header_size": 12,
+            "size": 92,
+            "flags": 7,
+            "enabled": 1,
+            "id": 1,
+            "duration": 758758,
+            "width": 859.300720,
+            "height": 360.000000
+          },
+          {
+            "name": "mdia",
+            "header_size": 8,
+            "size": 401,
+            "children": [
+              {
+                "name": "mdhd",
+                "header_size": 12,
+                "size": 32,
+                "timescale": 24000,
+                "duration": 0,
+                "duration(ms)": 0,
+                "language": "und"
+              },
+              {
+                "name": "hdlr",
+                "header_size": 12,
+                "size": 53,
+                "handler_type": "vide",
+                "handler_name": "Bento4 Video Handler"
+              },
+              {
+                "name": "minf",
+                "header_size": 8,
+                "size": 308,
+                "children": [
+                  {
+                    "name": "vmhd",
+                    "header_size": 12,
+                    "size": 20,
+                    "flags": 1,
+                    "graphics_mode": 0,
+                    "op_color": "0000,0000,0000"
+                  },
+                  {
+                    "name": "dinf",
+                    "header_size": 8,
+                    "size": 36,
+                    "children": [
+                      {
+                        "name": "dref",
+                        "header_size": 12,
+                        "size": 28,
+                        "children": [
+                          {
+                            "name": "url ",
+                            "header_size": 12,
+                            "size": 12,
+                            "flags": 1,
+                            "location": "[local to file]"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "stbl",
+                    "header_size": 8,
+                    "size": 244,
+                    "children": [
+                      {
+                        "name": "stsd",
+                        "header_size": 12,
+                        "size": 168,
+                        "entry_count": 1,
+                        "children": [
+                          {
+                            "name": "avc1",
+                            "header_size": 8,
+                            "size": 152,
+                            "data_reference_index": 1,
+                            "width": 860,
+                            "height": 360,
+                            "compressor": "",
+                            "children": [
+                              {
+                                "name": "avcC",
+                                "header_size": 8,
+                                "size": 50,
+                                "Configuration Version": 1,
+                                "Profile": "Baseline",
+                                "Profile Compatibility": 192,
+                                "Level": 30,
+                                "NALU Length Size": 4,
+                                "Sequence Parameter": "[67 42 c0 1e d9 00 d8 2f ee 5f fc 39 98 39 a4 40 00 00 fa 40 00 2e e0 03 c5 8b 92]",
+                                "Picture Parameter": "[68 cb 8c b2]"
+                              },
+                              {
+                                "name": "pasp",
+                                "header_size": 8,
+                                "size": 16
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "stts",
+                        "header_size": 12,
+                        "size": 16,
+                        "entry_count": 0
+                      },
+                      {
+                        "name": "stsc",
+                        "header_size": 12,
+                        "size": 16,
+                        "entry_count": 0
+                      },
+                      {
+                        "name": "stsz",
+                        "header_size": 12,
+                        "size": 20,
+                        "sample_size": 0,
+                        "sample_count": 0
+                      },
+                      {
+                        "name": "stco",
+                        "header_size": 12,
+                        "size": 16,
+                        "entry_count": 0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "mvex",
+        "header_size": 8,
+        "size": 56,
+        "children": [
+          {
+            "name": "mehd",
+            "header_size": 12,
+            "size": 16,
+            "duration": 758758
+          },
+          {
+            "name": "trex",
+            "header_size": 12,
+            "size": 32,
+            "track id": 1,
+            "default sample description index": 1,
+            "default sample duration": 0,
+            "default sample size": 0,
+            "default sample flags": 0
+          }
+        ]
+      }
+    ]
+  }
+]

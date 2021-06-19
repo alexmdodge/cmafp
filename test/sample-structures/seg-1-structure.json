@@ -1,0 +1,54 @@
+[
+  {
+    "name": "moof",
+    "header_size": 8,
+    "size": 680,
+    "children": [
+      {
+        "name": "mfhd",
+        "header_size": 12,
+        "size": 16,
+        "sequence number": 1
+      },
+      {
+        "name": "traf",
+        "header_size": 8,
+        "size": 656,
+        "children": [
+          {
+            "name": "tfhd",
+            "header_size": 12,
+            "size": 28,
+            "flags": 131114,
+            "track ID": 1,
+            "sample description index": 1,
+            "default sample duration": 1001,
+            "default sample flags": 16842752
+          },
+          {
+            "name": "tfdt",
+            "header_size": 12,
+            "size": 20,
+            "version": 1,
+            "base media decode time": 0
+          },
+          {
+            "name": "trun",
+            "header_size": 12,
+            "size": 600,
+            "version": 1,
+            "flags": 517,
+            "sample count": 144,
+            "data offset": 688,
+            "first sample flags": 33554432
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "mdat",
+    "header_size": 8,
+    "size": 12355
+  }
+]
