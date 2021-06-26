@@ -26,13 +26,14 @@ CMAFP_ENGINE.onRuntimeInitialized = function () {
 
   // Load file into buffer
   const fileBuffer = fs.readFileSync(path.resolve(__dirname, 'sample/video/avc1/init.mp4'))
-  log(`File read with buffer length: ${fileBuffer.length}`)
+  log(`Local file read with buffer length: ${fileBuffer.length}`)
 
   // Create file with returned ID
   const fileName = 'cosmos_init'
   const fileId = CMAFP_ENGINE.createFile(fileName, fileBuffer.length)
 
-  log(`Started file: ${fileName}-${fileId}`)
+  space()
+  log(`Started file: ${fileName}-${fileId}\n`)
 
   // Start appending chunks of UInt8 values
   for (let i = 0; i < fileBuffer.length; i++) {
@@ -40,9 +41,12 @@ CMAFP_ENGINE.onRuntimeInitialized = function () {
     CMAFP_ENGINE.appendTo(fileId, bufferVal);
 
     // Verbose
-    //log(`bufferVal${i} hex: 0x${uint8AsHex(bufferVal)}`)
-    //log(`bufferVal${i} binary: ${uint8AsBinary(bufferVal)}`)
-    //space()
+    // Compare sample set of values
+    //if (i > (fileBuffer.length - 10)) {
+    //  const hexRep = `Hex${i}[0x${uint8AsHex(bufferVal)}]`
+    //  const intRep = `Int${i}[${bufferVal}]`
+    //  log(`${hexRep}\t${intRep}\n`)
+    //}
   }
 
   const fileResult = CMAFP_ENGINE.closeFile(fileId);

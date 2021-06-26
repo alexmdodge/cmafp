@@ -1,22 +1,22 @@
 {
-  "configurations": [
-    {
-      "name": "Mac",
-      "includePath": [
-        "${workspaceFolder}/**",
-        "/Users/dodge/Library/Caches/node-gyp/14.16.1/include/node/**",
-        "/Users/dodge/Library/Caches/node-gyp/14.16.1/deps/v8/include/**",
-        "/Users/dodge/Projects/emsdk/upstream/emscripten/system/include/**"
-      ],
-      "defines": [],
-      "macFrameworkPath": [
-        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"
-      ],
-      "compilerPath": "/usr/bin/clang",
-      "cStandard": "c11",
-      "cppStandard": "c++14",
-      "intelliSenseMode": "clang-x64"
-    }
-  ],
-  "version": 4
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/Users/dodge/Library/Caches/node-gyp/14.16.1/include/node/**",
+                "/Users/dodge/Library/Caches/node-gyp/14.16.1/deps/v8/include/**",
+                "/Users/dodge/Projects/emsdk/upstream/emscripten/system/include/**"
+            ],
+            "defines": [],
+            "macFrameworkPath": [
+                "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"
+            ],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c11",
+            "cppStandard": "c++14",
+            "intelliSenseMode": "clang-x64"
+        }
+    ],
+    "version": 4
 }

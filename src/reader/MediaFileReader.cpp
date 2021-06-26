@@ -28,12 +28,6 @@ void MediaFileReader::append_to(int id, uint8_t value) {
     // Append buffer entry
     std::shared_ptr<MediaFile> file = files[id];
     file->append(value);
-
-    // Log buffer entry comparison values
-    // std::string hex_rep = BinaryHelpers::uint8_to_hex_string(value);
-    // std::string bit_rep = BinaryHelpers::uint8_to_binary_string(value);
-    // std::cout << "[CPP]: bufferVal" << file->buffer_index() << " hex: " << hex_rep << std::endl;
-    // std::cout << "[CPP]: bufferVal" << file->buffer_index() << " bit: " << bit_rep << std::endl;
 }
 
 std::string MediaFileReader::close_file(int id) {
