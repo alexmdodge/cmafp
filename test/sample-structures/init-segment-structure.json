@@ -5,11 +5,13 @@
     "size": 36,
     "major_brand": "isom",
     "minor_version": 512,
-    "compatible_brand": "isom",
-    "compatible_brand": "iso2",
-    "compatible_brand": "avc1",
-    "compatible_brand": "mp41",
-    "compatible_brand": "iso5"
+    "compatible_brand": [
+      "isom",
+      "iso2",
+      "avc1",
+      "mp41",
+      "iso5"
+    ]
   },
   {
     "name": "moov",

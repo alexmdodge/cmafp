@@ -10,6 +10,7 @@ class MediaFile {
     uint8_t u8_from(size_t pos);
     uint16_t u16_from(size_t pos);
     uint32_t u32_from(size_t pos);
+    uint64_t u64_from(size_t pos);
     std::string name();
     std::string status();
     bool is_invalid();

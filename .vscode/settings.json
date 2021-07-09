@@ -66,7 +66,11 @@
       "__tree": "cpp",
       "cfenv": "cpp",
       "map": "cpp",
-      "iomanip": "cpp"
+      "iomanip": "cpp",
+      "clocale": "cpp",
+      "forward_list": "cpp",
+      "numeric": "cpp",
+      "valarray": "cpp"
     },
 	"C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 120, AllowShortFunctionsOnASingleLine: Empty }",
   "C_Cpp.enhancedColorization": "Enabled",

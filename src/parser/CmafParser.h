@@ -2,10 +2,13 @@
 #include <string>
 #include <vector>
 
-#include "BoxParser.h"
+#include "Boxes.h"
+#include "json.hpp"
+
+using json = nlohmann::json;
 
 class CmafParser {
    public:
-    static void parse_header(std::shared_ptr<MediaFile>& file);
-    static void parse_segment(std::shared_ptr<MediaFile>& file);
+    static std::string parse_header(std::shared_ptr<MediaFile>& file);
+    static std::string parse_segment(std::shared_ptr<MediaFile>& file);
 };

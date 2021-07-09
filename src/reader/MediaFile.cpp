@@ -92,8 +92,25 @@ uint16_t MediaFile::u16_from(size_t pos) {
 }
 
 uint32_t MediaFile::u32_from(size_t pos) {
-    return (uint32_t)(_buffer[pos] << 24) + (uint32_t)(_buffer[pos + 1] << 16) | _buffer[pos + 2] << 8 |
-           _buffer[pos + 3];
+    // clang-format off
+    return (uint32_t)(_buffer[pos] << 24)
+         + (uint32_t)(_buffer[pos + 1] << 16)
+         + (uint32_t)(_buffer[pos + 2] << 8)
+         + (uint32_t)(_buffer[pos + 3]);
+    // clang-format on
+}
+
+uint64_t MediaFile::u64_from(size_t pos) {
+    // clang-format off
+    return ((uint64_t)(_buffer[pos]) << 56)
+         + ((uint64_t)(_buffer[pos + 1]) << 48)
+         + ((uint64_t)(_buffer[pos + 1]) << 40)
+         + ((uint64_t)(_buffer[pos + 3]) << 32)
+         + (uint64_t)(_buffer[pos + 4] << 24)
+         + (uint64_t)(_buffer[pos + 5] << 16)
+         + (uint64_t)(_buffer[pos + 6] << 8)
+         + (uint64_t)(_buffer[pos + 7]);
+    // clang-format on
 }
 
 /* File Management Operations */

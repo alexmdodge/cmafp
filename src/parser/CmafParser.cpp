@@ -9,22 +9,24 @@
  * CMAF Header order and structure obtained from ISO/IEC 23000-19
  * section 7.3.1 Table 3
  */
-void CmafParser::parse_header(std::shared_ptr<MediaFile>& file) {
+std::string CmafParser::parse_header(std::shared_ptr<MediaFile>& file) {
     std::cout << "[CPP] Parsing Header: " << file->name() << std::endl;
 
     // Each box operation will shift the corresponding offset
     // pointers. Internally these box parsers will contain
     // specific knowledge about their Format Requirements as defined
-    // in ISO/IEC 23000-19 section 7.3.1
-    BoxParser parser(file);
+    // in ISO/IEC 23000-19 section 7.3.1.
+    //
+    // Boxes with children will parse in a nested manner.
+    json reader;
+    Boxes boxes(file, reader);
 
-    std::cout << std::endl;
-    std::cout << "[CPP] - - - - - Header Boxes - - - - - - - - - -" << std::endl;
-    std::cout << std::endl;
+    boxes.ftyp();  // Format Req: 1
+    boxes.moov();  // Format Req: 1
 
-    parser.ftype();  // Format Req: 1
+    return reader.dump();
 }
 
-void CmafParser::parse_segment(std::shared_ptr<MediaFile>& file) {
-    std::cout << "[CPP] Segment Parsed" << std::endl;
+std::string CmafParser::parse_segment(std::shared_ptr<MediaFile>& file) {
+    return "{\"error\": \"Segment parser not yet implemented\"}";
 }

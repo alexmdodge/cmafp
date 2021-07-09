@@ -8,15 +8,15 @@
 #include "CmafParser.h"
 #include "MediaFileReader.h"
 
-void parse_cmaf_header(int id) {
+std::string parse_cmaf_header(int id) {
     std::shared_ptr<MediaFile> header_file = MediaFileReader::get_file(id);
 
     if (header_file->is_invalid()) {
         std::cout << "[CPP] Error parsing header file, invalid file reference" << std::endl;
-        return;
+        return "{ \"error\": \"Error parsing header\"}";
     }
 
-    CmafParser::parse_header(header_file);
+    return CmafParser::parse_header(header_file);
 }
 
 EMSCRIPTEN_BINDINGS(cmafp) {
