@@ -43,9 +43,9 @@ set(CP_INCLUDE_DIRS
 #)
 
 if(EMSCRIPTEN)
-    message("\nEMSCRIPTEN DEFINED\n")
+  message("\nEMSCRIPTEN DEFINED\n")
 else()
-    message("\nEMSCRIPTEN N/A\n")
+  message("\nEMSCRIPTEN N/A\n")
 endif()
 
 # mfp library modules and header includes
@@ -57,5 +57,11 @@ target_include_directories(cmafp PUBLIC ${CP_INCLUDE_DIRS})
 #target_link_libraries(cmafp ${CP_EXTERNAL_LIBS})
 
 # executable linking if desired
-#add_executable(CmafParser src/Main.cpp)
-#target_link_libraries(CmafParser cmafp)
+option(BUILD_APPS "Build example applications" OFF)
+if (BUILD_APPS)
+  message("\nBuilding Apps\n")
+  add_executable(CmafParser src/Main.cpp)
+  target_link_libraries(CmafParser cmafp)
+else()
+  message("\nSkipping App Build\n")
+endif()

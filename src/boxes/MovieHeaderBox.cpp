@@ -1,20 +1,16 @@
 
-#include "Boxes.h"
+#include "MovieHeaderBox.h"
 
 // Movie Header Box
 // Format Req: 1
 //
 // Media-independent data for entire presentation
-void Boxes::mvhd() {
+MovieHeaderBox::MovieHeaderBox(std::shared_ptr<MediaFile>& file, uint32_t start_offset) : Atom{file, start_offset} {
     // Extends Full Box
     uint32_t size = shift_u32();
     std::string box_type = shift_u32_str();
 
     uint8_t version = shift_u8();
-
-    _reader["MovieHeaderBox"]["size"] = size;
-    _reader["MovieHeaderBox"]["box_type"] = box_type;
-    _reader["MovieHeaderBox"]["version"] = version;
 
     // TODO: Merge flag binaries as bits
     uint8_t flag_1 = shift_u8();
@@ -26,21 +22,11 @@ void Boxes::mvhd() {
         uint64_t modification_time = shift_u64();
         uint32_t timescale = shift_u32();
         uint64_t duration = shift_u64();
-
-        _reader["MovieHeaderBox"]["creation_time"] = creation_time;
-        _reader["MovieHeaderBox"]["modification_time"] = modification_time;
-        _reader["MovieHeaderBox"]["timescale"] = timescale;
-        _reader["MovieHeaderBox"]["duration"] = duration;
     } else {  // version == 0
         uint32_t creation_time = shift_u32();
         uint32_t modification_time = shift_u32();
         uint32_t timescale = shift_u32();
         uint32_t duration = shift_u32();
-
-        _reader["MovieHeaderBox"]["creation_time"] = creation_time;
-        _reader["MovieHeaderBox"]["modification_time"] = modification_time;
-        _reader["MovieHeaderBox"]["timescale"] = timescale;
-        _reader["MovieHeaderBox"]["duration"] = duration;
     }
 
     // template int(32) rate = 0x00010000;  // typically 1.0
@@ -48,9 +34,6 @@ void Boxes::mvhd() {
 
     // template int(16) volume = 0x0100;    // typically, full volume
     uint16_t volume = shift_u16();
-
-    _reader["MovieHeaderBox"]["rate"] = rate;
-    _reader["MovieHeaderBox"]["volume"] = volume;
 
     // const bit(16) reserved = 0;
     // TODO: Merge binaries as bits
@@ -82,11 +65,4 @@ void Boxes::mvhd() {
     uint32_t pre_defined_6 = shift_u32();
 
     uint32_t next_track_id = shift_u32();
-
-    _reader["MovieHeaderBox"]["next_track_id"] = next_track_id;
-
-    _reader["MovieHeaderBox"]["parent"] = "MovieBox";
-
-    int childCount = _reader["MovieBox"]["children"];
-    _reader["MovieBox"]["children"] = childCount + 1;
-}
+};

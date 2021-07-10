@@ -14,7 +14,9 @@
   },
   "scripts": {
     "build": "(cd ./scripts && ./build.sh)",
-    "test": "node ./test/index.js"
+    "build:cpp": "(cd ./scripts && ./build-cpp.sh)",
+    "test": "node ./test/index.js",
+    "test:cpp": "(cd ./bin && ./CmafParser ../test/sample/video/avc1/init.mp4)"
   },
   "dependencies": {
     "chalk": "^4.1.1"
