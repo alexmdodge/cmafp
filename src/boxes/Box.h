@@ -1,8 +1,12 @@
 #pragma once
 
+#include <memory>
 #include <string>
 
 #include "MediaFile.h"
+#include "json.hpp"
+
+using json = nlohmann::json;
 
 // Box sizes are defined here in bytes, but referenced
 // in the spec via bits
@@ -14,10 +18,12 @@ const uint32_t UINT_16_BYTE_SHIFT_SIZE = 2;
 const uint32_t UINT_32_BYTE_SHIFT_SIZE = 4;
 const uint32_t UINT_64_BYTE_SHIFT_SIZE = 8;
 
-class Atom {
+class Box {
    public:
-    Atom(std::shared_ptr<MediaFile>& file, uint32_t start_offset);
-    ~Atom();
+    Box(std::shared_ptr<MediaFile>& file, uint32_t start_offset);
+    ~Box();
+
+    json to_json();
 
     uint64_t shift_u64();
     uint32_t shift_u32();
@@ -27,14 +33,12 @@ class Atom {
     std::string shift_u8_str();
 
     uint32_t size;
-    uint64_t largesize;
+    uint64_t large_size;
     std::string box_type;
-    uint32_t final_offset;
-    std::string usertype;
+    std::string user_type;
+    uint32_t end_offset;
 
    protected:
     uint32_t _start_offset;
-
-   private:
     std::shared_ptr<MediaFile>& _file;
 };
