@@ -16,13 +16,8 @@ std::string CmafParser::parse_header(std::shared_ptr<MediaFile>& media_file) {
     // in ISO/IEC 23000-19 section 7.3.1.
     //
     // Boxes with children will parse in a nested manner.
-    json reader;
-    Boxes boxes(media_file, reader);
-
-    boxes.ftyp();  // Format Req: 1
-    // boxes.moov();  // Format Req: 1
-
-    return reader.dump();
+    Boxes boxes(media_file);
+    return boxes.to_json_str();
 }
 
 std::string CmafParser::parse_segment(std::shared_ptr<MediaFile>& file) {

@@ -5,12 +5,17 @@
 #include <iostream>
 #include <sstream>
 
-std::string BinaryHelpers::uint8_to_hex_string(const uint8_t& value) {
+std::string BinaryHelpers::uint8_to_hex_string(const uint8_t& value, bool with_prefix) {
     std::stringstream stream;
 
     stream << std::hex << std::setfill('0');
     stream << std::hex << std::setw(2) << static_cast<int>(value);
-    return "0x" + stream.str();
+
+    if (with_prefix) {
+        return "0x" + stream.str();
+    } else {
+        return stream.str();
+    }
 }
 
 std::string BinaryHelpers::uint8_to_binary_string(const uint8_t& value) {
