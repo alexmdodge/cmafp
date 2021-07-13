@@ -12,10 +12,10 @@ MovieHeaderBox::MovieHeaderBox(std::shared_ptr<MediaFile>& file, uint32_t start_
     std::cout << "[MovieHeaderBox] offset start: " << _byte_offset << std::endl;
 
     if (version == 1) {
-        // creation_time = shift_u64();
-        // modification_time = shift_u64();
-        // timescale = shift_u32();
-        // duration = shift_u64();
+        creation_time = shift_u64();
+        modification_time = shift_u64();
+        timescale = shift_u32();
+        duration = shift_u64();
     } else {  // version == 0
         // Note: casting u32 values into u64 for simplicity
         // of interfacing, but could explicitly shift into smaller
