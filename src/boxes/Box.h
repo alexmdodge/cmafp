@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <memory>
 #include <string>
 
@@ -37,8 +38,9 @@ class Box {
     std::string box_type;
     std::string user_type;
     uint32_t end_offset;
+    std::string box_variation = "standard";
 
    protected:
-    uint32_t _start_offset;
+    uint32_t _byte_offset;
     std::shared_ptr<MediaFile>& _file;
 };

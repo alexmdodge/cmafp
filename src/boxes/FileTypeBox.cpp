@@ -7,7 +7,7 @@ FileTypeBox::FileTypeBox(std::shared_ptr<MediaFile>& file, uint32_t start_offset
 
     compatible_brands = {};
 
-    while (_start_offset < size) {
+    while (_byte_offset < size) {
         compatible_brands.push_back(shift_u32_str());
     }
 };

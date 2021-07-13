@@ -13,4 +13,5 @@ class FullBox : public Box {
 
     uint8_t version;
     std::string flags;
+    std::string box_variation = "full";
 };

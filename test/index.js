@@ -57,6 +57,6 @@ CMAFP_ENGINE.onRuntimeInitialized = function () {
   log(`Parsing header: ${fileName}`)
   const headerData = CMAFP_ENGINE.parseHeader(fileId)
 
-  console.log(JSON.parse(headerData))
+  console.log(JSON.stringify(JSON.parse(headerData), null, 2))
   //log(`CMAFP RUNTIME CHUNKS SIZE: ${CMAFP_ENGINE.logHeapSize()}`)
 }

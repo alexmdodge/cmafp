@@ -1,14 +1,13 @@
 
-//#include "Boxes.h"
+#include "TrackBox.h"
 
-//// Track Box
-//// Format Req: 1
-////
-//// DESC
-// void Boxes::trak() {
-//    // uint32_t size = shift_u32();
-//    // std::string box_type = shift_u32_str();
+TrackBox::TrackBox(std::shared_ptr<MediaFile>& file, uint32_t start_offset) : Box{file, start_offset} {
+    children = {};
+};
 
-//    //_reader["TrakBox"]["size"] = size;
-//    //_reader["TrakBox"]["box_type"] = box_type;
-//}
+json TrackBox::to_json() {
+    json data = Box::to_json();
+
+    data["children"] = children;
+    return data;
+}

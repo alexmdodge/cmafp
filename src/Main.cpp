@@ -67,7 +67,8 @@ int main(int argc, char *argv[]) {
     for (auto i = 0; i < file_length; i++) {
         uint8_t val = (uint8_t)buffer[i];
 
-        if ((file_length - i) < 50) {
+        // Logging last couple of bytes to check EOF
+        if ((file_length - i) < 10) {
             std::cout << "Index: " << i << " -- ";
             std::cout << "Writing: " << BinaryHelpers::uint8_to_hex_string(val) << std::endl;
         }

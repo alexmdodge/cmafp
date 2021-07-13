@@ -128,17 +128,6 @@ void MediaFile::append(uint8_t val) {
     }
 
     _buffer[_fill_pos] = val;
-
-    // Log buffer entry comparison values
-    if (buffer_index() > (size() - 10)) {
-        // uint8_t val = u8_from(buffer_index());
-        uint8_t val = u8_from(0);
-        std::string hex_rep = BinaryHelpers::uint8_to_hex_string(val);
-
-        std::cout << "[CPP]: Hex" << buffer_index() << "[" << hex_rep << "]";
-        std::cout << "\tInt" << buffer_index() << "[" << std::to_string(val) << "]" << std::endl;
-    }
-
     _fill_pos++;
 }
 
