@@ -8,9 +8,6 @@
 //
 // Media-independent data for entire presentation
 MovieHeaderBox::MovieHeaderBox(std::shared_ptr<MediaFile>& file, uint32_t start_offset) : FullBox{file, start_offset} {
-    std::cout << "[MovieHeaderBox] type: " << box_type << std::endl;
-    std::cout << "[MovieHeaderBox] offset start: " << _byte_offset << std::endl;
-
     if (version == 1) {
         creation_time = shift_u64();
         modification_time = shift_u64();
@@ -26,13 +23,11 @@ MovieHeaderBox::MovieHeaderBox(std::shared_ptr<MediaFile>& file, uint32_t start_
         duration = shift_u32();
     }
 
-    std::cout << "[MovieHeaderBox] post initials: " << _byte_offset << std::endl;
+    float u16_float_shift = 10000;
+    rate = (float)shift_u16() + ((float)shift_u16() / u16_float_shift);
 
-    int u16_float_shift = 10000;
-    rate = shift_u16() + (shift_u16() / u16_float_shift);
-
-    int u8_float_shift = 100;
-    volume = shift_u8() + (shift_u8() / u8_float_shift);
+    float u8_float_shift = 100;
+    volume = (float)shift_u8() + ((float)shift_u8() / u16_float_shift);
 
     // Reserved 16 Bits (2 bytes)
     shift_u8();

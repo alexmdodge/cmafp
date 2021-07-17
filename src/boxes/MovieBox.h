@@ -3,7 +3,7 @@
 
 #include "Box.h"
 
-// Movie json
+// Movie Box
 // Format Req: 1
 //
 // Metadata for presentation

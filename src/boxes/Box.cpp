@@ -3,10 +3,7 @@
 Box::Box(std::shared_ptr<MediaFile>& file, uint32_t start_offset) : _file(file), _byte_offset(start_offset) {
     size = shift_u32();
 
-    std::cout << "[Box] Size: " << size << std::endl;
-    std::cout << "[Box] Offset Post Size: " << _byte_offset << std::endl;
     box_type = shift_u32_str();
-    std::cout << "[Box] Offset Box Type: " << _byte_offset << std::endl;
     large_size = 0;
     user_type = "";
 
@@ -19,8 +16,6 @@ Box::Box(std::shared_ptr<MediaFile>& file, uint32_t start_offset) : _file(file),
     if (box_type == "uuid") {
         user_type = shift_u8_str();
     }
-
-    std::cout << "[Box] Offset End: " << _byte_offset << std::endl;
 }
 
 Box::~Box() {}

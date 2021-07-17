@@ -1,11 +1,18 @@
 
 #include "TrackHeaderBox.h"
 
+#include <iostream>
+
 #include "BinaryHelpers.h"
 
 TrackHeaderBox::TrackHeaderBox(std::shared_ptr<MediaFile>& file, uint32_t start_offset) : FullBox{file, start_offset} {
-    // TODO: Parse flags for track enabled, preview, presentation, and aspect ratio settings
-    
+    // TODO: Parse additional variations of flags
+    if (flags == "0x000007") {
+        track_enabled = true;
+        track_in_movie = true;
+        track_in_preview = true;
+    }
+
     if (version == 1) {
         creation_time = shift_u64();
         modification_time = shift_u64();
@@ -33,15 +40,14 @@ TrackHeaderBox::TrackHeaderBox(std::shared_ptr<MediaFile>& file, uint32_t start_
     shift_u32();
     shift_u32();
 
-    layer = shift_u16();
-    alternate_group = shift_u16();
+    layer = (int16_t)shift_u16();
+    alternate_group = (int16_t)shift_u16();
 
     int u8_float_shift = 100;
     volume = shift_u8() + (shift_u8() / u8_float_shift);
 
     // Reserved 16 Bits (2 bytes)
-    shift_u8();
-    shift_u8();
+    shift_u16();
 
     matrix = {};
     int matrix_spec_length = 9;
@@ -49,9 +55,9 @@ TrackHeaderBox::TrackHeaderBox(std::shared_ptr<MediaFile>& file, uint32_t start_
         matrix.push_back(BinaryHelpers::uint32_to_hex_string(shift_u32()));
     }
 
-    int u16_float_shift = 1000;
-    width = shift_u16() + (shift_u16() / u16_float_shift);
-    height = shift_u16() + (shift_u16() / u16_float_shift);
+    float u16_float_shift = 10000;
+    width = (float)shift_u16() + ((float)shift_u16() / u16_float_shift);
+    height = (float)shift_u16() + ((float)shift_u16() / u16_float_shift);
 };
 
 json TrackHeaderBox::to_json() {
@@ -60,6 +66,10 @@ json TrackHeaderBox::to_json() {
     data["creation_time"] = creation_time;
     data["modification_time"] = modification_time;
     data["track_id"] = track_id;
+    data["track_enabled"] = track_enabled;
+    data["track_in_movie"] = track_in_movie;
+    data["track_in_preview"] = track_in_preview;
+    data["track_size_is_aspect_ratio"] = track_size_is_aspect_ratio;
     data["duration"] = duration;
     data["layer"] = layer;
     data["alternate_group"] = alternate_group;
