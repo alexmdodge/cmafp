@@ -1,3 +1,7 @@
+#include <bitset>
+#include <iomanip>
+#include <iostream>
+#include <sstream>
 #include <string>
 
 namespace BinaryHelpers {
